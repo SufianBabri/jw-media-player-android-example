@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+}
+
+ext.jwPlayerVersion = '4.8.0'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+String licenseKey = properties.getProperty("jw-player-licence-key");
+
+android {
+    namespace 'com.example.jwmediaplayersample'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.jwmediaplayersample"
+        minSdk 21
+        targetSdk 32
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "JW_PLAYER_LICENSE_KEY", "\"" + licenseKey + "\""
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // JW Media Player
+    implementation "com.jwplayer:jwplayer-core:$jwPlayerVersion"
+    implementation "com.jwplayer:jwplayer-common:$jwPlayerVersion"
+    implementation "com.jwplayer:jwplayer-chromecast:$jwPlayerVersion"
+    implementation 'com.google.android.gms:play-services-cast-framework:21.2.0'
+}
