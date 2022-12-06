@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
-ext.jwPlayerVersion = '4.8.0'
+ext.jwPlayerVersion = '4.6.0'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file("local.properties").newDataInputStream())

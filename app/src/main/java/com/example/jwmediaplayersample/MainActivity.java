@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         new LicenseUtil().setLicenseKey(this, BuildConfig.JW_PLAYER_LICENSE_KEY);
         JWPlayerView playerView = findViewById(R.id.jwplayerview);
-        JWPlayer player = playerView.getPlayer(this);
+        JWPlayer player = playerView.getPlayer();
 
         List<PlaylistItem> playlist = new ArrayList<>();
         playlist.add(new PlaylistItem.Builder().file("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4").build());
